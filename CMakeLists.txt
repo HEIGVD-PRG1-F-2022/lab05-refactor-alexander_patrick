@@ -3,4 +3,4 @@ project(Refactor)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(Refactor main.cpp)
+add_executable(Refactor main.cpp affichageQuadrillage.cpp affichageQuadrillage.h choisirColonne.cpp choisirColonne.h verificationAlignements.cpp verificationAlignements.h)
