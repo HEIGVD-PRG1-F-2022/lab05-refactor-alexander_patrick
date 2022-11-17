@@ -50,4 +50,43 @@ MSG_ERROR_){
     return userInput;
 }
 
+/// This function asks user for an integer value between Min and Max
+/// \param YES             character that the user can enter
+/// \param NO              character that the user can enter
+/// \param MSG_USER 	   	Display sentence to request input
+/// \param MSG_ERROR       Display sentence if input is incorrect
+/// \return                user input
+
+template <typename T>
+T userInputChoice(T YES, T NO, const std::string& MSG_USER, const std::string&
+MSG_ERROR_){
+
+    T userInput;
+
+    // loop control variable
+    bool errorUserInput;
+
+    do {
+
+        // asks user if he wants to retry
+        std::cout << MSG_USER << " [" << YES << "|" << NO << "] : ";
+        std::cin >> userInput;
+
+        // check errors in user input
+        errorUserInput = std::cin.fail() || !(userInput == YES || userInput == NO);
+
+        // If there is an error, display error message
+        if (errorUserInput) {
+            std::cout << MSG_ERROR_ << std::endl;
+            std::cin.clear();
+        }
+
+        // clear buffer
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+    } while(errorUserInput);
+
+
+    return userInput;
+}
 #endif //LAB05_REFACTOR_ALEXANDER_PATRICK_INPUT_H
